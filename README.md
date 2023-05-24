@@ -15,7 +15,7 @@ sudo yum install tailscale
 sudo systemctl enable --now tailscaled
 ```
 
-Access system via SSH and configure with `tailscale up`
+Access system via SSM and configure with `tailscale up`
 
 ## Vault
 
@@ -131,4 +131,3 @@ curl http://localhost:9292/environment
 foo: aws_keyid
 excited: super_secret_keyid
 ```
-
