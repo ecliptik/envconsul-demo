@@ -117,6 +117,18 @@ Shell into the pod/container running on EKS with `kubectl exec -it pod-id -c sin
 
 ### App
 
-The sinatra app will return the ENV vars for `foo` and `excited` as plaintext when htting the endpoint on `/environment`.
+The sinatra app will return the ENV vars for `AWS_KEY_ID` and `AWS_SECRET_KEY_ID` as plaintext when htting the endpoint on `/environment`.
 
+Forward the port for the sinatra service
+```
+kubectl port-forward svc/sinatra 9292:9292
+```
+
+Use curl to see the environment variables values,
+
+```
+curl http://localhost:9292/environment
+foo: aws_keyid
+excited: super_secret_keyid
+```
 
