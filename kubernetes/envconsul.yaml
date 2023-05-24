@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: envconsul
+data:
+  config.hcl: |
+    vault {
+      address     = "http://$VAULTIP:8200"
+      token       = "hvs.$VAULTTOKEN"
+      renew_token = false
+    ssl {
+      enabled = false
+      verify  = false
+    }
+  }
