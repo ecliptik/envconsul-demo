@@ -50,7 +50,7 @@ module "eks" {
   cluster_endpoint_public_access = true
 
   eks_managed_node_group_defaults = {
-    ami_type = "BOTTLEROCKET_ARM_64"
+    ami_type = "AL2_ARM_64"
   }
 
   eks_managed_node_groups = {
@@ -62,7 +62,7 @@ module "eks" {
 
       min_size     = 1
       max_size     = 2
-      desired_size = 1
+      desired_size = 2
     }
 
     two = {
@@ -73,7 +73,7 @@ module "eks" {
 
       min_size     = 1
       max_size     = 2
-      desired_size = 1
+      desired_size = 2
     }
   }
 }

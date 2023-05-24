@@ -5,11 +5,16 @@ metadata:
 data:
   config.hcl: |
     vault {
-      address     = "http://$VAULTIP:8200"
-      token       = "hvs.$VAULTTOKEN"
+      address     = "http://ip:8200"
+      token       = "hvs.token"
       renew_token = false
-    ssl {
-      enabled = false
-      verify  = false
+      ssl {
+        enabled = false
+        verify  = false
+      }
     }
-  }
+    secret {
+      path = "secret/sinatra"
+      format = "{{key}}"
+      no_prefix = true
+    }
