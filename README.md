@@ -1,5 +1,7 @@
 # Vault, Kubernetes, and Envconsul Demo
 
+Terraform, Kubernetes, and app configurations to test [envconsul](https://github.com/hashicorp/envconsul) for injecting secrets securely from Vault into a Kubernetes pod via env vars.
+
 ## Install Tailscale
 
 We will use Tailscale to expose the EC2 vault instance over a Tailnet, so we can interact with it outside of the SSM console on a laptop.
