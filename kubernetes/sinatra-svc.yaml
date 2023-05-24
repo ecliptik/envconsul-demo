@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: sinatra
+spec:
+  selector:
+    app: sinatra
+  ports:
+    - protocol: TCP
+      port: 9292
+      targetPort: 9292
