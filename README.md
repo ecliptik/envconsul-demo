@@ -103,6 +103,8 @@ aws eks --region $(terraform output -raw region) update-kubeconfig --name $(terr
 
 Apply configmap and deployment which will run envconsul in an init container, copy it to the binary to `/envconsul` in the sinatra container and use the configmap to communicate with vault and create env vars.
 
+Create a Kubernetes secret to demonstrate how they are not encrypted
+
 ## Testing Env Var Exposure
 
 Expected behavior.
@@ -132,4 +134,34 @@ Use curl to see the environment variables values,
 curl http://localhost:9292/environment
 foo: aws_keyid
 excited: super_secret_keyid
+```
+
+## Command Cheat Sheet
+
+Display Kubernetes Secrets
+
+```
+kubectl get secret sinatra -o jsonpath="{.data.PASSWORD}" | base64 --decode
+kubectl get secret sinatra -o jsonpath="{.data.USERNAME}" | base64 --decode
+```
+
+Display Host Secrets
+
+```
+cd /var/lib/docker/containers/
+cat config.v2.json | jq '.Config.Env'
+```
+
+Exec into pod
+
+```
+kubectl exec -it sinatra-deployment-549bbfb499-clw9f -- /bin/bash
+env | egrep -i -e "(username|password)"
+```
+
+App secrets
+
+```
+kubectl port-forward svc/sinatra 9292:9292
+curl http://localhost:9292/environment
 ```

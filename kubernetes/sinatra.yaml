@@ -26,6 +26,9 @@ spec:
       - name: sinatra
         image: ecliptik/sinatra
         command: ["/envconsul/envconsul", "-config", "/envconsul/config/config.hcl", "bundle", "exec", "rackup", "-o", "0.0.0.0"]
+        envFrom:
+          - secretRef:
+              name: sinatra
         ports:
         - containerPort: 9292
         volumeMounts:
