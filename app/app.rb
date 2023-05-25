@@ -6,5 +6,5 @@ disable :show_exceptions
 
 #Return env vars
 get "/environment" do
-  "foo: #{ENV['AWS_KEY_ID']}\nexcited: #{ENV['AWS_SECRET_KEY_ID']}"
+  "AWS_KEY_ID: #{ENV['AWS_KEY_ID']}\nAWS_SECRET_KEY_ID: #{ENV['AWS_SECRET_KEY_ID']}"
 end
